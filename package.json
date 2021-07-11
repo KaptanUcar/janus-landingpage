@@ -1,0 +1,59 @@
+{
+  "name": "janus-landingpage",
+  "version": "1.0.0",
+  "description": "Janus's Landing Page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css:scss": "node-sass --output-style compressed -o dist src/scss",
+    "css:autoprefixer": "postcss -u autoprefixer -r dist/*.css",
+    "build:css": "npm run css:scss && npm run css:autoprefixer",
+    "watch:css": "onchange \"src/scss\" -- npm run build:css",
+    "serve": "browser-sync start --server \"dist\" --files \"dist\"",
+    "build:images": "imagemin src/images/**/* --out-dir=dist/images",
+    "watch:images": "onchange \"src/images\" -- npm run build:images",
+    "build:js": "webpack --mode=production",
+    "watch:js": "onchange \"src/js\" -- webpack --mode=development",
+    "build:html": "posthtml -c posthtml.json",
+    "watch:html": "onchange \"src/views\" -- npm run build:html",
+    "watch": "run-p serve watch:*",
+    "build": "run-p build:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanusAppTeam/janus-landingpage.git"
+  },
+  "keywords": [
+    "janus",
+    "landing",
+    "page",
+    "landing",
+    "page"
+  ],
+  "author": "Hasan Utku UÇAR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JanusAppTeam/janus-landingpage/issues"
+  },
+  "homepage": "https://github.com/JanusAppTeam/janus-landingpage#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
+    "autoprefixer": "^10.2.6",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.27.4",
+    "htmlnano": "^1.0.0",
+    "imagemin-cli": "^6.0.0",
+    "node-sass": "^6.0.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^8.3.1",
+    "posthtml": "^0.16.4",
+    "posthtml-cli": "^0.10.0",
+    "posthtml-modules": "^0.7.4",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.6"
+  }
+}

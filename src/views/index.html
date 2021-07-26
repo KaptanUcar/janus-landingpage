@@ -24,7 +24,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@5.0.2/dist/css/bootstrap-grid.min.css,npm/flickity@2.2.2/dist/flickity.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flickity@2.2.2/dist/flickity.min.css" integrity="sha256-fINRVC8bHX7MWYZdG4GyjUcYOjrS0hP3OVvZjdIL7TM=" crossorigin="anonymous">
+	
+	<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/@loadingio/loading.css@2.0.1/dist/loading.min.css" integrity="sha256-9uvwquKgtmS85DSfbXga3fCUlEsgl0I34ZOofD7nLlc=" crossorigin="anonymous">
+	<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@loadingio/loading.css@2.0.1/dist/loading.min.css" integrity="sha256-9uvwquKgtmS85DSfbXga3fCUlEsgl0I34ZOofD7nLlc=" crossorigin="anonymous"></noscript>	
+
+	<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://cdn.jsdelivr.net/npm/ldbutton@1.0.2/dist/ldbtn.min.css" integrity="sha256-sSl7AcdwPtSH+uYsG7oWrffScVXzmmuZ34Er3Lztv/U=" crossorigin="anonymous">
+	<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ldbutton@1.0.2/dist/ldbtn.min.css" integrity="sha256-sSl7AcdwPtSH+uYsG7oWrffScVXzmmuZ34Er3Lztv/U=" crossorigin="anonymous"></noscript>
+
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
@@ -33,7 +40,7 @@
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="#">JANUS</a>
+			<a class="navbar-brand" href="/">JANUS</a>
 			<div class="collapse navbar-collapse ms-5" id="navbarContent">
 				<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 					<li class="nav-item">
@@ -211,16 +218,16 @@
 			<h1>Ekran Görüntüleri</h1>
 		</div>
 		<div class="row">
-			<div class="col">
+			<div class="col px-0">
 				<div class="screenshot-gallery">
 					<div class="gallery-cell">
-						<img class="img-fluid" src="./images/screenshot_1@0,25x.png" alt="Ekran Görüntüsü 1">
+						<img class="img-fluid" data-flickity-lazyload-src="./images/screenshot_1@0,25x.png" alt="Ekran Görüntüsü 1">
 					</div>
 					<div class="gallery-cell">
-						<img class="img-fluid" src="./images/screenshot_2@0,25x.png" alt="Ekran Görüntüsü 2">
+						<img class="img-fluid" data-flickity-lazyload-src="./images/screenshot_2@0,25x.png" alt="Ekran Görüntüsü 2">
 					</div>
 					<div class="gallery-cell">
-						<img class="img-fluid" src="./images/screenshot_3@0,25x.png" alt="Ekran Görüntüsü 3">
+						<img class="img-fluid" data-flickity-lazyload-src="./images/screenshot_3@0,25x.png" alt="Ekran Görüntüsü 3">
 					</div>
 				</div>
 			</div>
@@ -236,13 +243,17 @@
 					<h1>Olmak İçin <b>Sıraya Gir!</b></h1>
 				</div>
 				<div class="newsletter-form d-flex justify-content-center position-relative">
-					<div class="form-inputs">
+					<div class="form-inputs d-flex flex-column">
 						<div class="d-flex position-relative w-100 h-100">
-							<input type="email" class="form-control" placeholder="E-mail">
+							<input id="field-newsletter-email" type="email" class="form-control" placeholder="E-mail">
 							<div class="btn-newsletter d-flex h-100">
-								<button type="button" class="btn btn-primary">Gönder</button>
+								<button id="button-newsletter-register" type="button" class="btn btn-primary ld-ext-right">
+									Gönder
+									<div class="ld ld-ring"></div>
+								</button>
 							</div>
 						</div>
+						<p id="result-newsletter-register" class="text-white text-center mt-3 px-2 d-none"></p>
 					</div>
 				</div>
 				<svg width="100%" viewBox="0 0 1439 51" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -299,17 +310,17 @@
 				<div class="d-flex w-100 h-100 align-items-center">
 					<p class="my-0 flex-grow-1">© 2021 JANUS</p>
 					<div class="social-icons d-flex">
-						<a class="social me-4" href="https://www.linkedin.com/company/janusapp/" target="_blank">
+						<a class="social me-4" href="https://www.linkedin.com/company/janusapp/" rel="noopener" target="_blank">
 							<svg width="100%" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M3.51227 25.726H7.72679V10.1323H3.51227V25.726ZM5.61953 3.24854C4.21469 3.24854 3.09082 4.37241 3.09082 5.77725C3.09082 7.18209 4.21469 8.30596 5.61953 8.30596C7.02437 8.30596 8.14825 7.18209 8.14825 5.77725C8.14825 4.37241 7.02437 3.24854 5.61953 3.24854ZM14.8915 12.5205V10.1323H10.677V25.726H14.8915V17.7184C14.8915 13.2229 20.6513 12.9419 20.6513 17.7184V25.726H24.8658V16.1731C24.8658 8.58693 16.8583 8.8679 14.8915 12.5205Z" fill="inherit"/>
 							</svg>
 						</a>
-						<a class="social me-4" href="https://www.instagram.com/usejanus/" target="_blank">
+						<a class="social me-4" href="https://www.instagram.com/usejanus/" rel="noopener" target="_blank">
 							<svg width="28" height="28" viewBox="0 -2 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M9.58522 1.35268C10.9849 1.28824 11.4311 1.27393 14.9964 1.27393C18.5618 1.27393 19.008 1.28944 20.4065 1.35268C21.8049 1.41592 22.7595 1.63905 23.5947 1.96241C24.4694 2.29293 25.2629 2.80959 25.9191 3.47779C26.5873 4.13287 27.1028 4.92516 27.4321 5.80098C27.7567 6.63623 27.9786 7.5908 28.043 8.98686C28.1075 10.3889 28.1218 10.8351 28.1218 14.3993C28.1218 17.9646 28.1063 18.4109 28.043 19.8105C27.9798 21.2066 27.7567 22.1611 27.4321 22.9964C27.1028 23.8723 26.5865 24.6659 25.9191 25.3219C25.2629 25.9901 24.4694 26.5056 23.5947 26.8349C22.7595 27.1595 21.8049 27.3814 20.4089 27.4459C19.008 27.5103 18.5618 27.5246 14.9964 27.5246C11.4311 27.5246 10.9849 27.5091 9.58522 27.4459C8.18916 27.3826 7.23459 27.1595 6.39934 26.8349C5.52343 26.5056 4.72982 25.9893 4.07377 25.3219C3.40602 24.6665 2.88928 23.8733 2.55958 22.9976C2.23622 22.1623 2.01428 21.2077 1.94985 19.8117C1.88541 18.4097 1.87109 17.9634 1.87109 14.3993C1.87109 10.834 1.88661 10.3877 1.94985 8.98924C2.01309 7.5908 2.23622 6.63623 2.55958 5.80098C2.88977 4.92526 3.4069 4.13205 4.07496 3.4766C4.73008 2.809 5.52289 2.29227 6.39815 1.96241C7.2334 1.63905 8.18797 1.41711 9.58403 1.35268H9.58522ZM20.3003 3.71524C18.9161 3.652 18.5009 3.63888 14.9964 3.63888C11.492 3.63888 11.0767 3.652 9.69261 3.71524C8.41229 3.77371 7.71784 3.98729 7.25487 4.16747C6.64276 4.40611 6.20485 4.6889 5.74546 5.14829C5.30999 5.57194 4.97486 6.08769 4.76464 6.6577C4.58446 7.12067 4.37088 7.81512 4.31241 9.09544C4.24917 10.4796 4.23604 10.8948 4.23604 14.3993C4.23604 17.9037 4.24917 18.319 4.31241 19.7031C4.37088 20.9834 4.58446 21.6779 4.76464 22.1408C4.97464 22.71 5.30994 23.2267 5.74546 23.6503C6.16905 24.0858 6.68571 24.4211 7.25487 24.6311C7.71784 24.8113 8.41229 25.0248 9.69261 25.0833C11.0767 25.1465 11.4908 25.1597 14.9964 25.1597C18.5021 25.1597 18.9161 25.1465 20.3003 25.0833C21.5806 25.0248 22.275 24.8113 22.738 24.6311C23.3501 24.3924 23.788 24.1096 24.2474 23.6503C24.683 23.2267 25.0182 22.71 25.2283 22.1408C25.4084 21.6779 25.622 20.9834 25.6805 19.7031C25.7437 18.319 25.7568 17.9037 25.7568 14.3993C25.7568 10.8948 25.7437 10.4796 25.6805 9.09544C25.622 7.81512 25.4084 7.12067 25.2283 6.6577C24.9896 6.04559 24.7068 5.60768 24.2474 5.14829C23.8237 4.71285 23.308 4.37773 22.738 4.16747C22.275 3.98729 21.5806 3.77371 20.3003 3.71524ZM13.32 18.4455C14.2562 18.8352 15.2988 18.8878 16.2695 18.5943C17.2403 18.3008 18.079 17.6793 18.6424 16.8361C19.2059 15.9929 19.4591 14.9802 19.3589 13.971C19.2586 12.9619 18.8112 12.0188 18.0928 11.3029C17.6349 10.8453 17.0812 10.4949 16.4717 10.2769C15.8621 10.0589 15.2117 9.97885 14.5675 10.0424C13.9232 10.1059 13.3011 10.3115 12.7458 10.6444C12.1905 10.9772 11.716 11.4291 11.3563 11.9673C10.9966 12.5056 10.7608 13.1169 10.6657 13.7573C10.5706 14.3976 10.6187 15.0511 10.8065 15.6707C10.9943 16.2902 11.3171 16.8604 11.7518 17.3402C12.1864 17.82 12.722 18.1975 13.32 18.4455ZM10.226 9.62881C10.8524 9.00234 11.5962 8.5054 12.4147 8.16636C13.2332 7.82732 14.1105 7.65281 14.9964 7.65281C15.8824 7.65281 16.7597 7.82732 17.5782 8.16636C18.3967 8.5054 19.1404 9.00234 19.7669 9.62881C20.3934 10.2553 20.8903 10.999 21.2294 11.8175C21.5684 12.636 21.7429 13.5133 21.7429 14.3993C21.7429 15.2852 21.5684 16.1625 21.2294 16.981C20.8903 17.7996 20.3934 18.5433 19.7669 19.1697C18.5017 20.4349 16.7857 21.1457 14.9964 21.1457C13.2072 21.1457 11.4912 20.4349 10.226 19.1697C8.96077 17.9045 8.24998 16.1885 8.24998 14.3993C8.24998 12.61 8.96077 10.894 10.226 9.62881ZM23.2392 8.65753C23.3944 8.51109 23.5187 8.33498 23.6046 8.13965C23.6906 7.94431 23.7365 7.73371 23.7396 7.52031C23.7427 7.30692 23.703 7.09507 23.6228 6.89731C23.5425 6.69955 23.4234 6.5199 23.2725 6.36899C23.1216 6.21809 22.942 6.09899 22.7442 6.01876C22.5464 5.93853 22.3346 5.89879 22.1212 5.9019C21.9078 5.90501 21.6972 5.95091 21.5019 6.03687C21.3065 6.12283 21.1304 6.24711 20.984 6.40236C20.6992 6.70428 20.5433 7.1053 20.5493 7.52031C20.5554 7.93532 20.7229 8.33164 21.0164 8.62513C21.3099 8.91861 21.7062 9.08617 22.1212 9.09222C22.5362 9.09827 22.9372 8.94234 23.2392 8.65753Z" fill="inherit"/>
 							</svg>
 						</a>
-						<a class="social me-4" href="https://www.facebook.com/usejanus" target="_blank">
+						<a class="social me-4" href="https://www.facebook.com/usejanus" rel="noopener" target="_blank">
 							<svg width="14" height="25" viewBox="0 0 14 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g clip-path="url(#clip0)">
 									<path d="M4.0689 24.9357V13.2731H0.896484V9.07395H4.0689V5.48736C4.0689 2.669 5.94286 0.0808105 10.2609 0.0808105C12.0091 0.0808105 13.3019 0.243734 13.3019 0.243734L13.2001 4.16499C13.2001 4.16499 11.8816 4.15251 10.4429 4.15251C8.88577 4.15251 8.6363 4.85006 8.6363 6.00783V9.07395H13.3238L13.1199 13.2731H8.6363V24.9357H4.0689Z" fill="inherit"/>
@@ -321,7 +332,7 @@
 								</defs>
 							</svg>
 						</a>
-						<a class="social" href="https://twitter.com/UseJanus" target="_blank">
+						<a class="social" href="https://twitter.com/UseJanus" rel="noopener" target="_blank">
 							<svg width="29" height="29" viewBox="0 -2 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M28.5819 5.9412C27.6044 6.37436 26.5543 6.66703 25.4503 6.79932C26.5894 6.11773 27.4416 5.04499 27.8479 3.78126C26.7777 4.41694 25.6064 4.86438 24.385 5.10415C23.5636 4.22714 22.4756 3.64584 21.29 3.4505C20.1044 3.25517 18.8875 3.45673 17.8281 4.02389C16.7688 4.59105 15.9264 5.49207 15.4316 6.58708C14.9369 7.68208 14.8175 8.9098 15.0919 10.0796C12.9234 9.97074 10.8021 9.40711 8.86548 8.42531C6.92891 7.44351 5.22041 6.06548 3.85088 4.38066C3.3826 5.18844 3.11334 6.125 3.11334 7.12244C3.11281 8.02036 3.33393 8.90452 3.75708 9.69649C4.18022 10.4885 4.79231 11.1637 5.53903 11.6624C4.67303 11.6349 3.82614 11.4009 3.06885 10.9799V11.0501C3.06876 12.3095 3.50439 13.5301 4.30181 14.5049C5.09923 15.4796 6.20934 16.1485 7.44376 16.3979C6.6404 16.6153 5.79815 16.6473 4.9806 16.4915C5.32888 17.5752 6.0073 18.5227 6.92088 19.2016C7.83446 19.8805 8.93747 20.2567 10.0755 20.2776C8.14364 21.7941 5.75782 22.6168 3.30182 22.6131C2.86676 22.6133 2.43208 22.5878 2 22.537C4.49298 24.1399 7.39498 24.9906 10.3588 24.9873C20.3917 24.9873 25.8764 16.6777 25.8764 9.47086C25.8764 9.23672 25.8706 9.00024 25.86 8.7661C26.9269 7.99458 27.8478 7.03919 28.5796 5.94471L28.5819 5.9412Z" fill="inherit"/>
 							</svg>

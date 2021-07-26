@@ -54,6 +54,8 @@ nav.navbar {
 }
 
 .navbar-appbtns {
+    z-index: 1;
+    
     .btn-link {
         color: $janus-colors-login;
         font-weight: 500;
@@ -112,7 +114,7 @@ nav.navbar {
 
             > p {
                 color: $janus-colors-text-content;
-                font-size: 0.75rem;
+                font-size: 0.8125rem;
                 font-weight: 400;
                 line-height: 1.5 !important;
             }
@@ -160,6 +162,18 @@ nav.navbar {
                     }
                 }
             }
+
+            /*&::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.2); 
+                backdrop-filter: blur(8px); // This be the blur
+                border-radius: 1.25rem;
+            }*/
         }
     }
 }
@@ -246,6 +260,18 @@ nav.navbar {
 .screenshot-gallery {
     .gallery-cell {
         width: 50%;
+        display: flex;
+        padding: 1rem;
+
+        img {
+            border-radius: 1rem;
+            /*filter: drop-shadow(1px 1px 0.5rem #849BAF);*/
+            box-shadow: 0rem 0rem 1rem 0rem #849baf;
+        }
+
+        &:not(.is-selected) img {
+            transform: scale(0.75);
+        }
     }
 
     .flickity-page-dots {
@@ -264,16 +290,6 @@ nav.navbar {
                 background: $janus-colors-active;
             }
         }
-    }
-
-    img {
-        display: flex;
-        /*max-width: 500px;*/
-        /*max-width: 756px;*/
-
-        /*&.is-selected {
-            max-width: 756px;
-        }*/
     }
 }
 
@@ -307,7 +323,7 @@ nav.navbar {
                 input {
                     border: 0;
                     border-radius: 0.625rem;
-                    padding: 1rem 1.125rem;
+                    padding: 1rem 8.125rem 1rem 1.125rem;
                     font-size: 1.25rem;
 
                     &::placeholder {
@@ -446,6 +462,17 @@ footer {
 
     .janus-container {
         padding: $janus-padding-content-2;
+    }
+
+    .screenshot-gallery {
+        .gallery-cell {
+            padding: 0.25rem;
+
+            img {
+                box-shadow: 0rem 0rem 0.5rem 0rem #849baf;
+                border-radius: 0.5rem;
+            }
+        }
     }
 
     .newsletter {

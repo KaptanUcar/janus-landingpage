@@ -590,3 +590,26 @@ footer {
         }
     }
 }
+
+@media only screen and (max-width: 425px) {
+    .newsletter {
+        .newsletter-top {
+            .newsletter-title {
+                .newsletter-illustration {
+                    left: -10%;
+                    width: 125px;
+                }
+
+                h1 {
+                    font-size: 1rem;
+                }
+            }
+
+            /*.newsletter-form {
+                .form-inputs {
+                    width: 75%;
+                }
+            }*/
+        }
+    }
+}
